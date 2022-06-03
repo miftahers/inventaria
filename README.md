@@ -1,0 +1,2 @@
+# inventaria
+TUGAS UAS KELOMPOK 2 PBO
