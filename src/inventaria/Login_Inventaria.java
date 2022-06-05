@@ -59,7 +59,9 @@ public class Login_Inventaria extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel3.setText("Password");
 
+        jButton1.setBackground(new java.awt.Color(255, 134, 47));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Masuk");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

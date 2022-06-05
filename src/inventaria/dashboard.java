@@ -130,7 +130,7 @@ public class dashboard extends javax.swing.JFrame {
 
         barangpage.setBackground(new java.awt.Color(255, 255, 255));
 
-        tabel_barang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tabel_barang.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         tabel_barang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -142,6 +142,7 @@ public class dashboard extends javax.swing.JFrame {
                 "Kode Barang", "Nama Barang", "Jenis Barang", "Stok"
             }
         ));
+        tabel_barang.setSelectionBackground(new java.awt.Color(255, 134, 47));
         tabel_barang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabel_barangMouseClicked(evt);
@@ -158,7 +159,9 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_cariBarang.setBackground(new java.awt.Color(255, 134, 47));
         btn_cariBarang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_cariBarang.setForeground(new java.awt.Color(255, 255, 255));
         btn_cariBarang.setText("Cari");
         btn_cariBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,7 +194,9 @@ public class dashboard extends javax.swing.JFrame {
 
         textField_stok.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
+        btn_kosongkanFormBarang.setBackground(new java.awt.Color(255, 134, 47));
         btn_kosongkanFormBarang.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_kosongkanFormBarang.setForeground(new java.awt.Color(255, 255, 255));
         btn_kosongkanFormBarang.setText("Kosongkan");
         btn_kosongkanFormBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,7 +204,9 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_hapusBarang.setBackground(new java.awt.Color(255, 134, 47));
         btn_hapusBarang.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_hapusBarang.setForeground(new java.awt.Color(255, 255, 255));
         btn_hapusBarang.setText("Hapus");
         btn_hapusBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,7 +214,9 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_ubahBarang.setBackground(new java.awt.Color(255, 134, 47));
         btn_ubahBarang.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_ubahBarang.setForeground(new java.awt.Color(255, 255, 255));
         btn_ubahBarang.setText("Ubah");
         btn_ubahBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,7 +224,9 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_tambahBarang.setBackground(new java.awt.Color(255, 134, 47));
         btn_tambahBarang.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_tambahBarang.setForeground(new java.awt.Color(255, 255, 255));
         btn_tambahBarang.setText("Tambah");
         btn_tambahBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,7 +234,9 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_showAllBarang.setBackground(new java.awt.Color(255, 134, 47));
         btn_showAllBarang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_showAllBarang.setForeground(new java.awt.Color(255, 255, 255));
         btn_showAllBarang.setText("Tampilkan Semua Data");
         btn_showAllBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,6 +327,7 @@ public class dashboard extends javax.swing.JFrame {
         background.add(barangpage, "card3");
 
         karyawanpage.setBackground(new java.awt.Color(255, 255, 255));
+        karyawanpage.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel6.setText("NIP");
@@ -324,7 +338,7 @@ public class dashboard extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel8.setText("No Telp");
 
-        table_karyawan.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        table_karyawan.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         table_karyawan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -336,6 +350,7 @@ public class dashboard extends javax.swing.JFrame {
                 "NIP", "Nama", "No Telepon", "Jabatan"
             }
         ));
+        table_karyawan.setSelectionBackground(new java.awt.Color(255, 134, 47));
         table_karyawan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 table_karyawanMouseClicked(evt);
@@ -349,7 +364,9 @@ public class dashboard extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel9.setText("Jabatan");
 
+        btn_carikaryawan.setBackground(new java.awt.Color(255, 134, 47));
         btn_carikaryawan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_carikaryawan.setForeground(new java.awt.Color(255, 255, 255));
         btn_carikaryawan.setText("Cari");
         btn_carikaryawan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -357,7 +374,9 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
+        reset_form_k.setBackground(new java.awt.Color(255, 134, 47));
         reset_form_k.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        reset_form_k.setForeground(new java.awt.Color(255, 255, 255));
         reset_form_k.setText("Kosongkan");
         reset_form_k.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -365,7 +384,9 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_hapus_k.setBackground(new java.awt.Color(255, 134, 47));
         btn_hapus_k.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_hapus_k.setForeground(new java.awt.Color(255, 255, 255));
         btn_hapus_k.setText("Hapus");
         btn_hapus_k.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -373,7 +394,9 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_ubah_k.setBackground(new java.awt.Color(255, 134, 47));
         btn_ubah_k.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_ubah_k.setForeground(new java.awt.Color(255, 255, 255));
         btn_ubah_k.setText("Ubah");
         btn_ubah_k.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -381,7 +404,9 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_tambah_k.setBackground(new java.awt.Color(255, 134, 47));
         btn_tambah_k.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_tambah_k.setForeground(new java.awt.Color(255, 255, 255));
         btn_tambah_k.setText("Tambah");
         btn_tambah_k.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -389,7 +414,9 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
+        btn_showAllKaryawan.setBackground(new java.awt.Color(255, 134, 47));
         btn_showAllKaryawan.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_showAllKaryawan.setForeground(new java.awt.Color(255, 255, 255));
         btn_showAllKaryawan.setText("Tampilkan Semua Data");
         btn_showAllKaryawan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -448,7 +475,7 @@ public class dashboard extends javax.swing.JFrame {
                     .addComponent(btn_carikaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textField_carikaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_showAllKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(karyawanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(karyawanpageLayout.createSequentialGroup()
@@ -623,6 +650,7 @@ public class dashboard extends javax.swing.JFrame {
 
         background.add(peminjamanpage, "card5");
 
+        jMenuBar1.setBackground(new java.awt.Color(255, 134, 47));
         jMenuBar1.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
 
         homemenu.setText("Home");
