@@ -402,6 +402,7 @@ public class dashboard extends javax.swing.JFrame {
                 "id", "nama", "jumlah", "nip_karyawan", "tgl_pinjam", "tgl_kembali"
             }
         ));
+        tabelPinjam.setSelectionBackground(new java.awt.Color(255, 134, 47));
         tabelPinjam.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelPinjamMouseClicked(evt);
@@ -412,10 +413,14 @@ public class dashboard extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel13.setText("Tgl Pinjam");
 
+        jButton13.setBackground(new java.awt.Color(255, 134, 47));
         jButton13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(255, 255, 255));
         jButton13.setText("Cari");
 
+        btnReset.setBackground(new java.awt.Color(255, 134, 47));
         btnReset.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnReset.setForeground(new java.awt.Color(255, 255, 255));
         btnReset.setText("Kosongkan");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -423,7 +428,9 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
+        deletePinjam.setBackground(new java.awt.Color(255, 134, 47));
         deletePinjam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        deletePinjam.setForeground(new java.awt.Color(255, 255, 255));
         deletePinjam.setText("Hapus");
         deletePinjam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -431,7 +438,9 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
+        btnUpdatePinjam.setBackground(new java.awt.Color(255, 134, 47));
         btnUpdatePinjam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnUpdatePinjam.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdatePinjam.setText("Ubah");
         btnUpdatePinjam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -439,7 +448,9 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
+        insertPinjam.setBackground(new java.awt.Color(255, 134, 47));
         insertPinjam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        insertPinjam.setForeground(new java.awt.Color(255, 255, 255));
         insertPinjam.setText("Tambah");
         insertPinjam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -459,9 +470,10 @@ public class dashboard extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Kode Barang", "Nama Barang", "Jenis Barang", "Stok"
             }
         ));
+        tblBarang.setSelectionBackground(new java.awt.Color(255, 134, 47));
         tblBarang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblBarangMouseClicked(evt);
@@ -478,9 +490,10 @@ public class dashboard extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "NIP", "Nama Karyawan", "No Telepon", "Jabatan"
             }
         ));
+        tblKaryawan.setSelectionBackground(new java.awt.Color(255, 134, 47));
         tblKaryawan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblKaryawanMouseClicked(evt);
@@ -496,47 +509,47 @@ public class dashboard extends javax.swing.JFrame {
         peminjamanpageLayout.setHorizontalGroup(
             peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, peminjamanpageLayout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(peminjamanpageLayout.createSequentialGroup()
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(43, 43, 43)
-                            .addComponent(nipKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(peminjamanpageLayout.createSequentialGroup()
-                            .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtIdPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(43, 43, 43)
-                            .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jmlBarang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
-                                .addComponent(namaBarang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
-                                .addComponent(idPinjam, javax.swing.GroupLayout.Alignment.LEADING))))
-                    .addGroup(peminjamanpageLayout.createSequentialGroup()
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(insertPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(peminjamanpageLayout.createSequentialGroup()
-                                .addComponent(btnUpdatePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(deletePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tglPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(peminjamanpageLayout.createSequentialGroup()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(tglKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addContainerGap(99, Short.MAX_VALUE)
                 .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, peminjamanpageLayout.createSequentialGroup()
                         .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, peminjamanpageLayout.createSequentialGroup()
+                        .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(peminjamanpageLayout.createSequentialGroup()
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(43, 43, 43)
+                                    .addComponent(nipKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(peminjamanpageLayout.createSequentialGroup()
+                                    .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtIdPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(43, 43, 43)
+                                    .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jmlBarang, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(namaBarang, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(idPinjam, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(peminjamanpageLayout.createSequentialGroup()
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(insertPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(peminjamanpageLayout.createSequentialGroup()
+                                        .addComponent(btnUpdatePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(deletePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tglPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(peminjamanpageLayout.createSequentialGroup()
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(tglKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(3, 3, 3)))
+                        .addGap(42, 42, 42)
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -547,56 +560,50 @@ public class dashboard extends javax.swing.JFrame {
         peminjamanpageLayout.setVerticalGroup(
             peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, peminjamanpageLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(peminjamanpageLayout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(33, 33, 33)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(peminjamanpageLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, peminjamanpageLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(idPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtIdPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)))
-                .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(peminjamanpageLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(namaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jmlBarang)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(peminjamanpageLayout.createSequentialGroup()
-                                .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(namaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
-                                .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jmlBarang, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
-                                .addGap(34, 34, 34)
-                                .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nipKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(35, 35, 35)
-                                .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tglPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(28, 28, 28)
-                                .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tglKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnUpdatePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(deletePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nipKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(peminjamanpageLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(insertPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(peminjamanpageLayout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(tglPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tglKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnUpdatePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deletePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(insertPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(69, 69, 69))
         );
 
         background.add(peminjamanpage, "card5");
@@ -668,7 +675,7 @@ public class dashboard extends javax.swing.JFrame {
         try {
             // 1. Query
 //            String query = "select pembelian.id, barang.nama, pembelian.jumlah, karyawan.nama, pembelian.tgl_pinjam, pembelian.tgl_kembali from pembelian inner join karyawan on karyawan.nip = pembelian.nip_karyawan inner join barang on barang.id = pembelian.id_barang;";
-            String query = "SELECT * FROM pembelian";
+            String query = "SELECT * FROM peminjaman";
             
             // 2. Fungsi Query
             java.sql.Connection vconn = (Connection)koneksi_database.configDB();
@@ -692,13 +699,13 @@ public class dashboard extends javax.swing.JFrame {
         }
     }
     
-    private void tampil_barang() {
+    public void tampil_barang() {
         // Membuat object pada table
         DefaultTableModel tbm = new DefaultTableModel();
         tbm.addColumn("Kode Barang");
         tbm.addColumn("Nama Barang");
         tbm.addColumn("Jenis Barang");
-        tbm.addColumn("stok");
+        tbm.addColumn("Stok");
         
         try {
             // 1. Query
@@ -817,7 +824,7 @@ public class dashboard extends javax.swing.JFrame {
             String url="jdbc:mysql://localhost/inventaria"; //url database
             String user="root"; //User database
             String pass="";
-            String sql = "DELETE FROM pembelian WHERE id ="+ id +";";
+            String sql = "DELETE FROM peminjaman WHERE id ="+ id +";";
             Connection C = (Connection)koneksi_database.configDB();
             Statement s = C.createStatement();
             s.execute(sql);
@@ -851,7 +858,7 @@ public class dashboard extends javax.swing.JFrame {
             String url="jdbc:mysql://localhost/inventaria"; //url database
             String user="root"; //User database
             String pass="";
-            String sql = "INSERT INTO pembelian VALUES (null, "+id_brg+","+jml+","+nip+",'"+pinjam+"','" +kembali+"');";
+            String sql = "INSERT INTO peminjaman VALUES (null, "+id_brg+","+jml+","+nip+",'"+pinjam+"','" +kembali+"');";
             Connection C = (Connection)koneksi_database.configDB();
             Statement s = C.createStatement();
             s.execute(sql);
@@ -928,7 +935,7 @@ public class dashboard extends javax.swing.JFrame {
         String tgl_k = tglKembali.getText();
         
         // SQL Connection
-        String Qsql = "UPDATE pembelian SET id_barang = '"+id_brg+"', jumlah = '"+jml+"', nip_karyawan = '"+nip+"', tgl_pinjam ='"+tgl_p+"', tgl_kembali ='"+tgl_k+"' WHERE pembelian.id = '"+id_pinjam+"';";
+        String Qsql = "UPDATE peminjaman SET id_barang = '"+id_brg+"', jumlah = '"+jml+"', nip_karyawan = '"+nip+"', tgl_pinjam ='"+tgl_p+"', tgl_kembali ='"+tgl_k+"' WHERE peminjaman.id = '"+id_pinjam+"';";
         java.sql.Connection C = (Connection)koneksi_database.configDB(); //Mengambil fungsi koneksi DB dari koneksi_database.java
         java.sql.PreparedStatement s = C.prepareStatement(Qsql); //Mengirimkan Parameter
         s.execute(); //Eksekusi SQL
