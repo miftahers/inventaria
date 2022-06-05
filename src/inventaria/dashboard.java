@@ -1,5 +1,13 @@
 package inventaria;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 public class dashboard extends javax.swing.JFrame {
     
     public dashboard() {
@@ -51,22 +59,22 @@ public class dashboard extends javax.swing.JFrame {
         peminjamanpage = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        jmlBarang = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
-        jTextField15 = new javax.swing.JTextField();
+        tabelPinjam = new javax.swing.JTable();
+        nipKaryawan = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jTextField16 = new javax.swing.JTextField();
-        jTextField17 = new javax.swing.JTextField();
+        tglPinjam = new javax.swing.JTextField();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+        deletePinjam = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jTextField18 = new javax.swing.JTextField();
+        insertPinjam = new javax.swing.JButton();
+        tglKembali = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        namaBarang = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         homemenu = new javax.swing.JMenu();
         barangmenu = new javax.swing.JMenu();
@@ -74,7 +82,6 @@ public class dashboard extends javax.swing.JFrame {
         peminjamanmenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
         setResizable(false);
 
         background.setLayout(new java.awt.CardLayout());
@@ -89,7 +96,7 @@ public class dashboard extends javax.swing.JFrame {
         homepageLayout.setHorizontalGroup(
             homepageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homepageLayout.createSequentialGroup()
-                .addContainerGap(870, Short.MAX_VALUE)
+                .addContainerGap(933, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(786, 786, 786))
         );
@@ -186,7 +193,7 @@ public class dashboard extends javax.swing.JFrame {
                             .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 274, Short.MAX_VALUE)
                 .addGroup(barangpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barangpageLayout.createSequentialGroup()
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -316,7 +323,7 @@ public class dashboard extends javax.swing.JFrame {
                             .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 274, Short.MAX_VALUE)
                 .addGroup(karyawanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, karyawanpageLayout.createSequentialGroup()
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -374,8 +381,8 @@ public class dashboard extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel12.setText("Karyawan");
 
-        jTable5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tabelPinjam.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        tabelPinjam.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -386,9 +393,9 @@ public class dashboard extends javax.swing.JFrame {
                 "Kode Barang", "Nama Barang", "Jenis Barang", "Stok"
             }
         ));
-        jScrollPane5.setViewportView(jTable5);
-        if (jTable5.getColumnModel().getColumnCount() > 0) {
-            jTable5.getColumnModel().getColumn(0).setResizable(false);
+        jScrollPane5.setViewportView(tabelPinjam);
+        if (tabelPinjam.getColumnModel().getColumnCount() > 0) {
+            tabelPinjam.getColumnModel().getColumn(0).setResizable(false);
         }
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
@@ -400,24 +407,29 @@ public class dashboard extends javax.swing.JFrame {
         jButton14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton14.setText("Kosongkan");
 
-        jButton15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton15.setText("Hapus");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        deletePinjam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        deletePinjam.setText("Hapus");
+        deletePinjam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                deletePinjamActionPerformed(evt);
             }
         });
 
         jButton16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton16.setText("Ubah");
 
-        jButton17.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton17.setText("Tambah");
+        insertPinjam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        insertPinjam.setText("Tambah");
+        insertPinjam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertPinjamActionPerformed(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel14.setText("Tgl Kembali");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Barang", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        namaBarang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Barang", "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout peminjamanpageLayout = new javax.swing.GroupLayout(peminjamanpage);
         peminjamanpage.setLayout(peminjamanpageLayout);
@@ -430,33 +442,33 @@ public class dashboard extends javax.swing.JFrame {
                         .addGroup(peminjamanpageLayout.createSequentialGroup()
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(43, 43, 43)
-                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nipKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(peminjamanpageLayout.createSequentialGroup()
                             .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(43, 43, 43)
                             .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField14, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jmlBarang, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                                .addComponent(namaBarang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(peminjamanpageLayout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(insertPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(peminjamanpageLayout.createSequentialGroup()
                                 .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(deletePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tglPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(peminjamanpageLayout.createSequentialGroup()
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
-                        .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tglKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 274, Short.MAX_VALUE)
                 .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, peminjamanpageLayout.createSequentialGroup()
                         .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -478,30 +490,30 @@ public class dashboard extends javax.swing.JFrame {
                     .addGroup(peminjamanpageLayout.createSequentialGroup()
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(namaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                            .addComponent(jmlBarang, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                         .addGap(34, 34, 34)
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nipKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tglPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tglKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deletePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(insertPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(77, 77, 77))
         );
 
@@ -605,9 +617,46 @@ public class dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
+    private void deletePinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePinjamActionPerformed
+        int id;
+        // gimana cara dapetin id dari nama barang dalem combo box
+//        id = Integer.parseInt(namaBarang);
+        try{
+            String url="jdbc:mysql://localhost/inventaria"; //url database
+            String user="root"; //User database
+            String pass="";
+            String sql = "DELETE FROM pembelian WHERE id ="+ id +";";
+            Connection C = (Connection)koneksi_database.configDB();
+            Statement s = C.createStatement();
+            s.execute(sql);
+            JOptionPane.showMessageDialog(barangmenu, "Berhasil");
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(barangmenu, "Gagal");
+        }
+    }//GEN-LAST:event_deletePinjamActionPerformed
+
+    private void insertPinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertPinjamActionPerformed
+        int id, jml, nip;
+        Date pinjam, kembali;
+        
+        pinjam = Date.valueOf(tglPinjam.getText());
+        kembali = Date.valueOf(tglKembali.getText());
+        jml = Integer.parseInt(jmlBarang.getText());
+        nip = Integer.parseInt(nipKaryawan.getText());
+
+        try{
+            String url="jdbc:mysql://localhost/inventaria"; //url database
+            String user="root"; //User database
+            String pass="";
+            String sql = "INSERT INTO pembelian VALUES (null, null,"+jml+","+nip+","+pinjam+"," +kembali+");";
+            Connection C = (Connection)koneksi_database.configDB();
+            Statement s = C.createStatement();
+            s.execute(sql);
+            JOptionPane.showMessageDialog(barangmenu, "Berhasil");
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(barangmenu, "Gagal");
+        }
+    }//GEN-LAST:event_insertPinjamActionPerformed
  
     
     public static void main(String args[]) {
@@ -646,16 +695,16 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel background;
     private javax.swing.JMenu barangmenu;
     private javax.swing.JPanel barangpage;
+    private javax.swing.JButton deletePinjam;
     private javax.swing.JMenu homemenu;
     private javax.swing.JPanel homepage;
+    private javax.swing.JButton insertPinjam;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -663,7 +712,6 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -684,15 +732,10 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -700,9 +743,15 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jmlBarang;
     private javax.swing.JMenu karyawanmenu;
     private javax.swing.JPanel karyawanpage;
+    private javax.swing.JComboBox<String> namaBarang;
+    private javax.swing.JTextField nipKaryawan;
     private javax.swing.JMenu peminjamanmenu;
     private javax.swing.JPanel peminjamanpage;
+    private javax.swing.JTable tabelPinjam;
+    private javax.swing.JTextField tglKembali;
+    private javax.swing.JTextField tglPinjam;
     // End of variables declaration//GEN-END:variables
 }

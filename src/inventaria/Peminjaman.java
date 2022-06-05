@@ -5,6 +5,13 @@
  */
 package inventaria;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author saifer
@@ -16,7 +23,17 @@ public class Peminjaman extends javax.swing.JPanel {
      */
     public Peminjaman() {
         initComponents();
+//        Connection con = null;
+//        String sql = "SELECT barang.nama, pembelian.jumlah, pembelian.nip_karyawan, pembelian.tgl_pinjam, pembelian.tgl_kembali from pembelian inner join barang on barang.id = peminjaman.id_barang";
+//        try{
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            tablePinjaman.setModel((TableModel) rs);
+//        }catch(SQLException e){
+//            JOptionPane.showMessageDialog(null, e);
+//        }   
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +56,7 @@ public class Peminjaman extends javax.swing.JPanel {
         tgl_pinjam = new javax.swing.JTextField();
         tgl_kembali = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablePinjaman = new javax.swing.JTable();
         tambah = new javax.swing.JButton();
         edit = new javax.swing.JButton();
         hapus = new javax.swing.JButton();
@@ -94,7 +111,7 @@ public class Peminjaman extends javax.swing.JPanel {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablePinjaman.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -126,7 +143,7 @@ public class Peminjaman extends javax.swing.JPanel {
                 "Nama", "Jumlah", "Karyawan", "Tgl Pinjam", "Tgl Kembali"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tablePinjaman);
 
         tambah.setText("Tambah");
         tambah.addActionListener(new java.awt.event.ActionListener() {
@@ -271,11 +288,11 @@ public class Peminjaman extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jml;
     private javax.swing.JTextField karyawan;
     private javax.swing.JComboBox<String> nama;
     private javax.swing.JButton reset;
+    private javax.swing.JTable tablePinjaman;
     private javax.swing.JButton tambah;
     private javax.swing.JTextField tgl_kembali;
     private javax.swing.JTextField tgl_pinjam;
