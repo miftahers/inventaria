@@ -3,15 +3,18 @@ package inventaria;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class dashboard extends javax.swing.JFrame {
     
     public dashboard() {
         initComponents();
+//        tampil_pinjam();
         setExtendedState(MAXIMIZED_BOTH);
     }
     
@@ -74,7 +77,7 @@ public class dashboard extends javax.swing.JFrame {
         insertPinjam = new javax.swing.JButton();
         tglKembali = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        namaBarang = new javax.swing.JComboBox<>();
+        namaBarang = new javax.swing.JComboBox<String>();
         jMenuBar1 = new javax.swing.JMenuBar();
         homemenu = new javax.swing.JMenu();
         barangmenu = new javax.swing.JMenu();
@@ -384,19 +387,16 @@ public class dashboard extends javax.swing.JFrame {
         tabelPinjam.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         tabelPinjam.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Kode Barang", "Nama Barang", "Jenis Barang", "Stok"
+                "id", "nama", "jumlah", "nip_karyawan", "tgl_pinjam", "tgl_kembali"
             }
         ));
         jScrollPane5.setViewportView(tabelPinjam);
-        if (tabelPinjam.getColumnModel().getColumnCount() > 0) {
-            tabelPinjam.getColumnModel().getColumn(0).setResizable(false);
-        }
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel13.setText("Tgl Pinjam");
@@ -429,7 +429,7 @@ public class dashboard extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel14.setText("Tgl Kembali");
 
-        namaBarang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Barang", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        namaBarang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pilih Barang", "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout peminjamanpageLayout = new javax.swing.GroupLayout(peminjamanpage);
         peminjamanpage.setLayout(peminjamanpageLayout);
@@ -573,6 +573,43 @@ public class dashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tampil_pinjam() {
+        // Membuat object pada table
+        DefaultTableModel tbp = new DefaultTableModel();
+        tbp.addColumn("id");
+        tbp.addColumn("nama_barang");
+        tbp.addColumn("jumlah");
+        tbp.addColumn("nip_karyawan");
+        tbp.addColumn("tgl_pinjam");
+        tbp.addColumn("tgl_kembali");
+        
+        try {
+            // 1. Query
+//            String query = "SELECT p.id, b.nama, p.jumlah, k.nama, tgl_pinjam, tgl_kembali FROM pembelian AS p INNER JOIN barang as b on p.id = b.id INNER JOIN karyawan as k on p.nip_karyawan = k.nip";
+            String query = "SELECT * FROM pembelian";
+            
+            // 2. Fungsi Query
+            java.sql.Connection vconn = (Connection)koneksi_database.configDB();
+            
+            // 3. Kirim parameter fungsi java ke sql
+            java.sql.Statement statement = vconn.createStatement();
+            
+            // 4. Eksekusi
+            java.sql.ResultSet rs = statement.executeQuery(query);
+            
+            // 5. Looping untuk show data per baris
+            while (rs.next()) {
+                tbp.addRow(new Object[]{
+                    rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)
+                });
+            }
+            // Memasukan data dari penampungan ke tabel
+            tabelPinjam.setModel(tbp);
+        } catch (SQLException se) {
+            JOptionPane.showMessageDialog(null, "Gagal Menampilkan data..");
+        }
+    }
+    
     private void homemenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homemenuMouseClicked
         
         homepage.setVisible(true);
@@ -607,6 +644,7 @@ public class dashboard extends javax.swing.JFrame {
         barangpage.setVisible(false);
         karyawanpage.setVisible(false);
         
+        tampil_pinjam();
     }//GEN-LAST:event_peminjamanmenuMouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -618,7 +656,7 @@ public class dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void deletePinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePinjamActionPerformed
-        int id;
+        int id = 1;
         // gimana cara dapetin id dari nama barang dalem combo box
 //        id = Integer.parseInt(namaBarang);
         try{
@@ -634,7 +672,7 @@ public class dashboard extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(barangmenu, "Gagal");
         }
     }//GEN-LAST:event_deletePinjamActionPerformed
-
+    
     private void insertPinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertPinjamActionPerformed
         int id, jml, nip;
         Date pinjam, kembali;
