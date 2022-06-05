@@ -135,9 +135,7 @@ public class Login_Inventaria extends javax.swing.JFrame {
             } 
                 
         }catch (HeadlessException | SQLException e){
-            
                 JOptionPane.showMessageDialog(this, e.getMessage());
-
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
