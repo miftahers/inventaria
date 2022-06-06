@@ -1,7 +1,9 @@
 package inventaria;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -13,10 +15,12 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -101,9 +105,9 @@ public class dashboard extends javax.swing.JFrame {
         btn_showAllKaryawan = new javax.swing.JButton();
         peminjamanpage = new javax.swing.JPanel();
         jmlBarang = new javax.swing.JTextField();
-        jButton13 = new javax.swing.JButton();
+        tampil_cari_pinjam = new javax.swing.JButton();
         tglPinjam = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
+        jTextField_caripinjam = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         nipKaryawan = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -155,10 +159,10 @@ public class dashboard extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         jLabel2.setText("Dibuat Oleh Kelompok 2 :");
 
-        jLabel20.setFont(new java.awt.Font("Poppins", 1, 48)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
         jLabel20.setText("jLabel20");
 
-        jLabel5.setFont(new java.awt.Font("Poppins Black", 0, 72)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Poppins ExtraBold", 0, 72)); // NOI18N
         jLabel5.setText("jLabel5");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LOGO 21-9.png"))); // NOI18N
@@ -204,9 +208,9 @@ public class dashboard extends javax.swing.JFrame {
             .addGroup(homepageLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(1, 1, 1)
                 .addComponent(jLabel20)
-                .addGap(68, 68, 68)
+                .addGap(83, 83, 83)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel19)
@@ -224,7 +228,7 @@ public class dashboard extends javax.swing.JFrame {
                 .addComponent(jLabel17)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
 
         background.add(homepage, "card2");
@@ -254,6 +258,7 @@ public class dashboard extends javax.swing.JFrame {
             tabel_barang.getColumnModel().getColumn(0).setResizable(false);
         }
 
+        textField_cariBarang.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         textField_cariBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textField_cariBarangActionPerformed(evt);
@@ -270,7 +275,7 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
-        textField_kodeBarang.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        textField_kodeBarang.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         textField_kodeBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textField_kodeBarangActionPerformed(evt);
@@ -283,22 +288,22 @@ public class dashboard extends javax.swing.JFrame {
         label_namaBarang.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         label_namaBarang.setText("Nama Barang");
 
-        textField_namaBarang.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        textField_namaBarang.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
 
         label_jenisBarang.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         label_jenisBarang.setText("Jenis Barang");
 
-        textField_jenisBarang.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        textField_jenisBarang.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
 
         label_stok.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         label_stok.setText("Stok");
 
-        textField_stok.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        textField_stok.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
 
         btn_kosongkanFormBarang.setBackground(new java.awt.Color(255, 134, 47));
-        btn_kosongkanFormBarang.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_kosongkanFormBarang.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btn_kosongkanFormBarang.setForeground(new java.awt.Color(255, 255, 255));
-        btn_kosongkanFormBarang.setText("Kosongkan");
+        btn_kosongkanFormBarang.setText("Bersihkan");
         btn_kosongkanFormBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_kosongkanFormBarangActionPerformed(evt);
@@ -306,7 +311,7 @@ public class dashboard extends javax.swing.JFrame {
         });
 
         btn_hapusBarang.setBackground(new java.awt.Color(255, 134, 47));
-        btn_hapusBarang.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_hapusBarang.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btn_hapusBarang.setForeground(new java.awt.Color(255, 255, 255));
         btn_hapusBarang.setText("Hapus");
         btn_hapusBarang.addActionListener(new java.awt.event.ActionListener() {
@@ -316,7 +321,7 @@ public class dashboard extends javax.swing.JFrame {
         });
 
         btn_ubahBarang.setBackground(new java.awt.Color(255, 134, 47));
-        btn_ubahBarang.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_ubahBarang.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btn_ubahBarang.setForeground(new java.awt.Color(255, 255, 255));
         btn_ubahBarang.setText("Ubah");
         btn_ubahBarang.addActionListener(new java.awt.event.ActionListener() {
@@ -326,7 +331,7 @@ public class dashboard extends javax.swing.JFrame {
         });
 
         btn_tambahBarang.setBackground(new java.awt.Color(255, 134, 47));
-        btn_tambahBarang.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_tambahBarang.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btn_tambahBarang.setForeground(new java.awt.Color(255, 255, 255));
         btn_tambahBarang.setText("Tambah");
         btn_tambahBarang.addActionListener(new java.awt.event.ActionListener() {
@@ -430,11 +435,15 @@ public class dashboard extends javax.swing.JFrame {
         karyawanpage.setBackground(new java.awt.Color(255, 255, 255));
         karyawanpage.setForeground(new java.awt.Color(255, 255, 255));
 
+        nip_k.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel6.setText("NIP");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel7.setText("Nama ");
+
+        nama_k.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel8.setText("No Telp");
@@ -462,8 +471,14 @@ public class dashboard extends javax.swing.JFrame {
             table_karyawan.getColumnModel().getColumn(0).setResizable(false);
         }
 
+        telp_k.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel9.setText("Jabatan");
+
+        textField_carikaryawan.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+
+        jabatan_k.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
 
         btn_carikaryawan.setBackground(new java.awt.Color(255, 134, 47));
         btn_carikaryawan.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
@@ -476,9 +491,9 @@ public class dashboard extends javax.swing.JFrame {
         });
 
         reset_form_k.setBackground(new java.awt.Color(255, 134, 47));
-        reset_form_k.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        reset_form_k.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         reset_form_k.setForeground(new java.awt.Color(255, 255, 255));
-        reset_form_k.setText("Kosongkan");
+        reset_form_k.setText("Bersihkan");
         reset_form_k.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reset_form_kActionPerformed(evt);
@@ -486,7 +501,7 @@ public class dashboard extends javax.swing.JFrame {
         });
 
         btn_hapus_k.setBackground(new java.awt.Color(255, 134, 47));
-        btn_hapus_k.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_hapus_k.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btn_hapus_k.setForeground(new java.awt.Color(255, 255, 255));
         btn_hapus_k.setText("Hapus");
         btn_hapus_k.addActionListener(new java.awt.event.ActionListener() {
@@ -496,7 +511,7 @@ public class dashboard extends javax.swing.JFrame {
         });
 
         btn_ubah_k.setBackground(new java.awt.Color(255, 134, 47));
-        btn_ubah_k.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_ubah_k.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btn_ubah_k.setForeground(new java.awt.Color(255, 255, 255));
         btn_ubah_k.setText("Ubah");
         btn_ubah_k.addActionListener(new java.awt.event.ActionListener() {
@@ -506,7 +521,7 @@ public class dashboard extends javax.swing.JFrame {
         });
 
         btn_tambah_k.setBackground(new java.awt.Color(255, 134, 47));
-        btn_tambah_k.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_tambah_k.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btn_tambah_k.setForeground(new java.awt.Color(255, 255, 255));
         btn_tambah_k.setText("Tambah");
         btn_tambah_k.addActionListener(new java.awt.event.ActionListener() {
@@ -609,13 +624,26 @@ public class dashboard extends javax.swing.JFrame {
 
         peminjamanpage.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton13.setBackground(new java.awt.Color(255, 134, 47));
-        jButton13.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(255, 255, 255));
-        jButton13.setText("Cari");
+        jmlBarang.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+
+        tampil_cari_pinjam.setBackground(new java.awt.Color(255, 134, 47));
+        tampil_cari_pinjam.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        tampil_cari_pinjam.setForeground(new java.awt.Color(255, 255, 255));
+        tampil_cari_pinjam.setText("Cari");
+        tampil_cari_pinjam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tampil_cari_pinjamActionPerformed(evt);
+            }
+        });
+
+        tglPinjam.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+
+        jTextField_caripinjam.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel13.setText("Tgl Pinjam");
+
+        nipKaryawan.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
 
         tabelPinjam.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         tabelPinjam.setModel(new javax.swing.table.DefaultTableModel(
@@ -660,11 +688,15 @@ public class dashboard extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblBarang);
 
+        namaBarang.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel14.setText("Tgl Kembali");
 
+        tglKembali.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+
         insertPinjam.setBackground(new java.awt.Color(255, 134, 47));
-        insertPinjam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        insertPinjam.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         insertPinjam.setForeground(new java.awt.Color(255, 255, 255));
         insertPinjam.setText("Tambah");
         insertPinjam.addActionListener(new java.awt.event.ActionListener() {
@@ -674,7 +706,7 @@ public class dashboard extends javax.swing.JFrame {
         });
 
         btnUpdatePinjam.setBackground(new java.awt.Color(255, 134, 47));
-        btnUpdatePinjam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnUpdatePinjam.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnUpdatePinjam.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdatePinjam.setText("Ubah");
         btnUpdatePinjam.addActionListener(new java.awt.event.ActionListener() {
@@ -687,7 +719,7 @@ public class dashboard extends javax.swing.JFrame {
         jLabel11.setText("Jumlah");
 
         deletePinjam.setBackground(new java.awt.Color(255, 134, 47));
-        deletePinjam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        deletePinjam.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         deletePinjam.setForeground(new java.awt.Color(255, 255, 255));
         deletePinjam.setText("Hapus");
         deletePinjam.addActionListener(new java.awt.event.ActionListener() {
@@ -703,14 +735,16 @@ public class dashboard extends javax.swing.JFrame {
         jLabel10.setText("Nama Barang");
 
         btnReset.setBackground(new java.awt.Color(255, 134, 47));
-        btnReset.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnReset.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         btnReset.setForeground(new java.awt.Color(255, 255, 255));
-        btnReset.setText("Kosongkan");
+        btnReset.setText("Bersihkan");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
             }
         });
+
+        idPinjam.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
 
         tblKaryawan.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         tblKaryawan.setModel(new javax.swing.table.DefaultTableModel(
@@ -736,69 +770,73 @@ public class dashboard extends javax.swing.JFrame {
         peminjamanpage.setLayout(peminjamanpageLayout);
         peminjamanpageLayout.setHorizontalGroup(
             peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, peminjamanpageLayout.createSequentialGroup()
-                .addContainerGap(70, Short.MAX_VALUE)
+            .addGroup(peminjamanpageLayout.createSequentialGroup()
+                .addContainerGap(98, Short.MAX_VALUE)
                 .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, peminjamanpageLayout.createSequentialGroup()
-                        .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, peminjamanpageLayout.createSequentialGroup()
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(peminjamanpageLayout.createSequentialGroup()
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(43, 43, 43)
-                                    .addComponent(nipKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(peminjamanpageLayout.createSequentialGroup()
-                                    .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtIdPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(43, 43, 43)
-                                    .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jmlBarang, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(namaBarang, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(idPinjam, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(peminjamanpageLayout.createSequentialGroup()
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43)
+                                .addComponent(jTextField_caripinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tampil_cari_pinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(peminjamanpageLayout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 822, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(peminjamanpageLayout.createSequentialGroup()
                                 .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(insertPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(peminjamanpageLayout.createSequentialGroup()
-                                        .addComponent(btnUpdatePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(deletePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(tglPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(peminjamanpageLayout.createSequentialGroup()
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtIdPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(43, 43, 43)
-                                .addComponent(tglKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(3, 3, 3)))
-                        .addGap(28, 28, 28)
-                        .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(85, 85, 85))
+                                .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jmlBarang, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(namaBarang, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(idPinjam, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(128, 128, 128)
+                                .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(peminjamanpageLayout.createSequentialGroup()
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(43, 43, 43)
+                                        .addComponent(nipKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(peminjamanpageLayout.createSequentialGroup()
+                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(43, 43, 43)
+                                        .addComponent(tglPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(peminjamanpageLayout.createSequentialGroup()
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(43, 43, 43)
+                                        .addComponent(tglKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(3, 3, 3)))
+                                .addGap(252, 252, 252)))
+                        .addGap(53, 53, 53))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, peminjamanpageLayout.createSequentialGroup()
+                        .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(insertPinjam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(peminjamanpageLayout.createSequentialGroup()
+                                .addComponent(btnUpdatePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(deletePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnReset)))
+                        .addGap(767, 767, 767))))
         );
         peminjamanpageLayout.setVerticalGroup(
             peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, peminjamanpageLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tampil_cari_pinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_caripinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(peminjamanpageLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane5)
+                    .addComponent(jScrollPane1))
+                .addGap(39, 39, 39)
+                .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(peminjamanpageLayout.createSequentialGroup()
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(idPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -810,8 +848,8 @@ public class dashboard extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jmlBarang)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(peminjamanpageLayout.createSequentialGroup()
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nipKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -822,15 +860,15 @@ public class dashboard extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tglKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnUpdatePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deletePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(insertPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(69, 69, 69))
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(49, 49, 49)
+                .addGroup(peminjamanpageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUpdatePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deletePinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(insertPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91))
         );
 
         background.add(peminjamanpage, "card5");
@@ -847,6 +885,7 @@ public class dashboard extends javax.swing.JFrame {
         });
         jMenuBar1.add(homemenu);
 
+        barangmenu.setBackground(new java.awt.Color(255, 134, 47));
         barangmenu.setText("Barang");
         barangmenu.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
         barangmenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -902,7 +941,7 @@ public class dashboard extends javax.swing.JFrame {
         tbm.addColumn("Kode Barang");
         tbm.addColumn("Nama Barang");
         tbm.addColumn("Jenis Barang");
-        tbm.addColumn("stok");
+        tbm.addColumn("Stok");
         
         try {
             // 1. Query
@@ -925,6 +964,26 @@ public class dashboard extends javax.swing.JFrame {
             }
             // Memasukan data dari penampungan ke tabel
             tabel_barang.setModel(tbm);
+            
+        //Menghias Tabel
+        tabel_barang.getTableHeader().setFont(new Font("Montserrat Medium", Font.CENTER_BASELINE, 18));
+        tabel_barang.getTableHeader().setOpaque(false);
+        tabel_barang.getTableHeader().setBackground(new Color(255, 134, 47));
+        tabel_barang.getTableHeader().setForeground(new Color(0, 0, 0));
+        
+        //Mengubah lebar dari kolom tertentu sesuai kebutuhan
+        tabel_barang.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tabel_barang.getColumnModel().getColumn(1).setPreferredWidth(250);
+        tabel_barang.getColumnModel().getColumn(2).setPreferredWidth(250);
+        tabel_barang.setRowHeight(50);
+        
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tabel_barang.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        tabel_barang.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
+        tabel_barang.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
+        tabel_barang.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
+            
         } catch (SQLException se) {
             JOptionPane.showMessageDialog(null, "Gagal Menampilkan data..");
         }
@@ -939,7 +998,7 @@ public class dashboard extends javax.swing.JFrame {
         
         try {
             // 1. Query
-            String query = "SELECT * FROM barang WHERE `nama` LIKE '%"+kata_kunci+"%' OR `jenis` LIKE '%"+kata_kunci+"%'OR `jumlah` LIKE '%"+kata_kunci+"%'";
+            String query = "SELECT * FROM barang WHERE `nama` LIKE '%"+kata_kunci+"%' OR `jenis` LIKE '%"+kata_kunci+"%' OR `jumlah` LIKE '%"+kata_kunci+"%'";
             
             // 2. Fungsi Query
             java.sql.Connection vconn = (Connection)koneksi_database.configDB();
@@ -970,13 +1029,12 @@ public class dashboard extends javax.swing.JFrame {
         tbp.addColumn("Id Pinjam");
         tbp.addColumn("Id barang");
         tbp.addColumn("Jumlah");
-        tbp.addColumn("nip_karyawan");
+        tbp.addColumn("NIP karyawan");
         tbp.addColumn("Tgl pinjam");
         tbp.addColumn("Tgl kembali");
         
         try {
             // 1. Query
-//            String query = "select pembelian.id, barang.nama, pembelian.jumlah, karyawan.nama, pembelian.tgl_pinjam, pembelian.tgl_kembali from pembelian inner join karyawan on karyawan.nip = pembelian.nip_karyawan inner join barang on barang.id = pembelian.id_barang;";
             String query = "SELECT * FROM peminjaman";
             
             // 2. Fungsi Query
@@ -996,17 +1054,43 @@ public class dashboard extends javax.swing.JFrame {
             }
             // Memasukan data dari penampungan ke tabel
             tabelPinjam.setModel(tbp);
+            
+            //Menghias Tabel
+        tabelPinjam.getTableHeader().setFont(new Font("Montserrat Medium", Font.CENTER_BASELINE, 18));
+        tabelPinjam.getTableHeader().setOpaque(false);
+        tabelPinjam.getTableHeader().setBackground(new Color(255, 134, 47));
+        tabelPinjam.getTableHeader().setForeground(new Color(0, 0, 0));
+        
+        //Mengubah lebar dari kolom tertentu sesuai kebutuhan
+        tabelPinjam.getColumnModel().getColumn(0).setPreferredWidth(40);
+        tabelPinjam.getColumnModel().getColumn(1).setPreferredWidth(40);
+        tabelPinjam.getColumnModel().getColumn(2).setPreferredWidth(40);
+        tabelPinjam.getColumnModel().getColumn(3).setPreferredWidth(100);
+        tabelPinjam.getColumnModel().getColumn(4).setPreferredWidth(80);
+        tabelPinjam.getColumnModel().getColumn(5).setPreferredWidth(80);
+        tabelPinjam.setRowHeight(50);
+        
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tabelPinjam.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        tabelPinjam.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
+        tabelPinjam.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
+        tabelPinjam.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
+        tabelPinjam.getColumnModel().getColumn(4).setCellRenderer( centerRenderer );
+        tabelPinjam.getColumnModel().getColumn(5).setCellRenderer( centerRenderer );
+        tabelPinjam.getColumnModel().getColumn(6).setCellRenderer( centerRenderer );
+            
         } catch (SQLException se) {
             JOptionPane.showMessageDialog(null, "Gagal Menampilkan data..");
         }
     }
     
     private void tampil_barang_pinjam() {
-        // Membuat object pada table
+         // Membuat object pada table
         DefaultTableModel tbm = new DefaultTableModel();
         tbm.addColumn("Kode Barang");
-        tbm.addColumn("Nama Barang");
-        tbm.addColumn("Jenis Barang");
+        tbm.addColumn("Nama");
+        tbm.addColumn("Jenis");
         tbm.addColumn("Stok");
         
         try {
@@ -1030,6 +1114,26 @@ public class dashboard extends javax.swing.JFrame {
             }
             // Memasukan data dari penampungan ke tabel
             tblBarang.setModel(tbm);
+            
+        //Menghias Tabel
+        tblBarang.getTableHeader().setFont(new Font("Montserrat Medium", Font.CENTER_BASELINE, 18));
+        tblBarang.getTableHeader().setOpaque(false);
+        tblBarang.getTableHeader().setBackground(new Color(255, 134, 47));
+        tblBarang.getTableHeader().setForeground(new Color(0, 0, 0));
+        
+        //Mengubah lebar dari kolom tertentu sesuai kebutuhan
+        tblBarang.getColumnModel().getColumn(0).setPreferredWidth(250);
+        tblBarang.getColumnModel().getColumn(1).setPreferredWidth(150);
+        tblBarang.getColumnModel().getColumn(2).setPreferredWidth(150);
+        tblBarang.setRowHeight(50);
+        
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tblBarang.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        tblBarang.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
+        tblBarang.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
+        tblBarang.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
+            
         } catch (SQLException se) {
             JOptionPane.showMessageDialog(null, "Gagal Menampilkan data..");
         }
@@ -1039,7 +1143,7 @@ public class dashboard extends javax.swing.JFrame {
         // Membuat object pada table
         DefaultTableModel tbm = new DefaultTableModel();
         tbm.addColumn("NIP");
-        tbm.addColumn("Nama Karyawan");
+        tbm.addColumn("Nama");
         tbm.addColumn("No Telepon");
         tbm.addColumn("Jabatan");
         
@@ -1064,6 +1168,64 @@ public class dashboard extends javax.swing.JFrame {
             }
             // Memasukan data dari penampungan ke tabel
             tblKaryawan.setModel(tbm);
+            
+            //Menghias Tabel
+        tblKaryawan.getTableHeader().setFont(new Font("Montserrat Medium", Font.CENTER_BASELINE, 18));
+        tblKaryawan.getTableHeader().setOpaque(false);
+        tblKaryawan.getTableHeader().setBackground(new Color(255, 134, 47));
+        tblKaryawan.getTableHeader().setForeground(new Color(0, 0, 0));
+        
+        //Mengubah lebar dari kolom tertentu sesuai kebutuhan
+        tblKaryawan.getColumnModel().getColumn(0).setPreferredWidth(70);
+        tblKaryawan.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tblKaryawan.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tblKaryawan.getColumnModel().getColumn(3).setPreferredWidth(100);
+        tblKaryawan.setRowHeight(50);
+        
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tblKaryawan.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        tblKaryawan.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
+        tblKaryawan.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
+        tblKaryawan.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
+            
+        } catch (SQLException se) {
+            JOptionPane.showMessageDialog(null, "Gagal Menampilkan data..");
+        }
+    }
+    
+    private void tampil_cari_pinjam(String katakunci){
+        // Membuat object pada table
+        DefaultTableModel tbp = new DefaultTableModel();
+        tbp.addColumn("Id Pinjam");
+        tbp.addColumn("Id barang");
+        tbp.addColumn("Jumlah");
+        tbp.addColumn("NIP karyawan");
+        tbp.addColumn("Tgl pinjam");
+        tbp.addColumn("Tgl kembali");
+        
+        try {
+            // 1. Query
+            String query = "SELECT * FROM peminjaman WHERE `id_barang` LIKE '%"+katakunci+"%' OR `jumlah` LIKE '%"+katakunci+"%' OR `nip_karyawan` LIKE '%"+katakunci+"% OR `tgl_pinjam` LIKE '%"+katakunci+"% OR `tgl_kembali` LIKE '%"+katakunci+"%'";
+            
+            // 2. Fungsi Query
+            java.sql.Connection vconn = (Connection)koneksi_database.configDB();
+            
+            // 3. Kirim parameter fungsi java ke sql
+            java.sql.Statement statement = vconn.createStatement();
+            
+            // 4. Eksekusi
+            java.sql.ResultSet rs = statement.executeQuery(query);
+            
+            // 5. Looping untuk show data per baris
+            while (rs.next()) {
+                tbp.addRow(new Object[]{
+                    rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)
+                });
+            }
+            // Memasukan data dari penampungan ke tabel
+            tabelPinjam.setModel(tbp);
+            
         } catch (SQLException se) {
             JOptionPane.showMessageDialog(null, "Gagal Menampilkan data..");
         }
@@ -1104,9 +1266,9 @@ public class dashboard extends javax.swing.JFrame {
         barangpage.setVisible(false);
         karyawanpage.setVisible(false);
         
-        tampil_pinjam();
-        tampil_barang_pinjam();
         tampil_karyawan_pinjam();
+        tampil_barang_pinjam();
+        tampil_pinjam();
     }//GEN-LAST:event_peminjamanmenuMouseClicked
     
     // Barang
@@ -1498,9 +1660,7 @@ public class dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_deletePinjamActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        // TODO add your handling code here:
-        tampil_pinjam();
-
+        
         // Membersihkan form
         idPinjam.setText("");
         namaBarang.setText("");
@@ -1508,6 +1668,8 @@ public class dashboard extends javax.swing.JFrame {
         nipKaryawan.setText("");
         tglPinjam.setText("");
         tglKembali.setText("");
+        
+        tampil_pinjam();
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void tblKaryawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKaryawanMouseClicked
@@ -1519,6 +1681,12 @@ public class dashboard extends javax.swing.JFrame {
 
         nipKaryawan.setText(nip);
     }//GEN-LAST:event_tblKaryawanMouseClicked
+
+    private void tampil_cari_pinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tampil_cari_pinjamActionPerformed
+         // Menampung data textField/form pada variabel
+        String katakunci = jTextField_caripinjam.getText();
+        tampil_cari_pinjam(katakunci);
+    }//GEN-LAST:event_tampil_cari_pinjamActionPerformed
 
         private void tampil_table_k(){
         DefaultTableModel tbk  = new DefaultTableModel ();
@@ -1544,6 +1712,26 @@ public class dashboard extends javax.swing.JFrame {
             
             table_karyawan.setModel(tbk);
                         
+        //Menghias Tabel
+        table_karyawan.getTableHeader().setFont(new Font("Montserrat Medium", Font.CENTER_BASELINE, 18));
+        table_karyawan.getTableHeader().setOpaque(false);
+        table_karyawan.getTableHeader().setBackground(new Color(255, 134, 47));
+        table_karyawan.getTableHeader().setForeground(new Color(0, 0, 0));
+        
+        //Mengubah lebar dari kolom tertentu sesuai kebutuhan
+        table_karyawan.getColumnModel().getColumn(0).setPreferredWidth(10);
+        table_karyawan.getColumnModel().getColumn(1).setPreferredWidth(100);
+        table_karyawan.getColumnModel().getColumn(2).setPreferredWidth(100);
+        table_karyawan.getColumnModel().getColumn(3).setPreferredWidth(100);
+        table_karyawan.setRowHeight(50);
+        
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        table_karyawan.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        table_karyawan.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
+        table_karyawan.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
+        table_karyawan.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Gagal Menampilkan data..");
         };
@@ -1632,7 +1820,6 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel homepage;
     private javax.swing.JTextField idPinjam;
     private javax.swing.JButton insertPinjam;
-    private javax.swing.JButton jButton13;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1659,7 +1846,7 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField_caripinjam;
     private javax.swing.JTextField jabatan_k;
     private javax.swing.JTextField jmlBarang;
     private javax.swing.JMenu karyawanmenu;
@@ -1678,6 +1865,7 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JTable tabelPinjam;
     private javax.swing.JTable tabel_barang;
     private javax.swing.JTable table_karyawan;
+    private javax.swing.JButton tampil_cari_pinjam;
     private javax.swing.JTable tblBarang;
     private javax.swing.JTable tblKaryawan;
     private javax.swing.JTextField telp_k;
