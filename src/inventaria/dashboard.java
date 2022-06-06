@@ -1206,7 +1206,7 @@ public class dashboard extends javax.swing.JFrame {
         
         try {
             // 1. Query
-            String query = "SELECT * FROM peminjaman WHERE `id_barang` LIKE '%"+katakunci+"%' OR `jumlah` LIKE '%"+katakunci+"%' OR `nip_karyawan` LIKE '%"+katakunci+"% OR `tgl_pinjam` LIKE '%"+katakunci+"% OR `tgl_kembali` LIKE '%"+katakunci+"%'";
+            String query = "SELECT * FROM peminjaman WHERE `id_barang` LIKE '%"+katakunci+"%' OR `jumlah` LIKE '%"+katakunci+"%' OR `nip_karyawan` LIKE '%"+katakunci+"%' OR `tgl_pinjam` LIKE '%"+katakunci+"%' OR `tgl_kembali` LIKE '%"+katakunci+"%'";
             
             // 2. Fungsi Query
             java.sql.Connection vconn = (Connection)koneksi_database.configDB();
